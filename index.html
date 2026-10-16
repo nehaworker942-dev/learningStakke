@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StakeAdda — Premium Gaming</title>
+  <meta name="description" content="StakeAdda - Elite online sports betting & casino games. Instant play, secure & seamless." />
+  <meta name="theme-color" content="#070b14" />
+
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '881706684933110');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=881706684933110&ev=PageView&noscript=1"
+  /></noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #070b14;
+      color: #ffffff;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 14px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background image layer */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7, 11, 20, 0.82) 0%, rgba(7, 11, 20, 0.88) 40%, rgba(7, 11, 20, 0.92) 100%),
+        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&q=80') center center / cover no-repeat;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Soft color orbs on top of image */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 20%, rgba(16, 185, 129, 0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 45% at 85% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 60%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Main Card */
+    .card {
+      width: 100%;
+      background: linear-gradient(165deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 42px 28px 36px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 25px 50px -12px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.55), rgba(251, 191, 36, 0.45), transparent);
+    }
+
+    /* Brand */
+    .brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ecfdf5 0%, #6ee7b7 40%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #94a3b8;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    /* Timer */
+    .timer-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .timer {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #fcd34d;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 100px;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.1);
+    }
+
+    .timer span {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fbbf24;
+      font-variant-numeric: tabular-nums;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      width: 220px;
+      height: 80px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 14px 20px;
+      box-shadow:
+        0 0 0 1px rgba(16, 185, 129, 0.22),
+        0 0 32px rgba(16, 185, 129, 0.14),
+        0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.55), rgba(52, 211, 153, 0.35), rgba(251, 191, 36, 0.5));
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Social proof */
+    .proof {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .proof-num {
+      font-size: 15px;
+      font-weight: 600;
+      color: #6ee7b7;
+      margin-bottom: 4px;
+    }
+
+    .proof-sub {
+      font-size: 12.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Features */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 30px;
+      padding: 0 4px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13.5px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .feature-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.22), rgba(16, 185, 129, 0.12));
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: #34d399;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    /* CTA Button */
+    .cta {
+      display: block;
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #059669 0%, #10b981 45%, #d97706 100%);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15.5px;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 8px 24px rgba(16, 185, 129, 0.35),
+        0 0 0 1px rgba(255,255,255,0.1) inset;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: 0.55s;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 12px 32px rgba(16, 185, 129, 0.45),
+        0 0 0 1px rgba(255,255,255,0.15) inset;
+    }
+
+    .cta:hover::before {
+      left: 120%;
+    }
+
+    .cta:active {
+      transform: translateY(0);
+    }
+
+    /* Motto */
+    .motto {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 12.5px;
+      color: #64748b;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+    }
+
+    .tg-line {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: #475569;
+    }
+
+    .tg-line span {
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    /* Bottom section */
+    .bottom {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 28px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .support-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 18px;
+      transition: color 0.2s;
+    }
+
+    .support-link:hover {
+      color: #6ee7b7;
+    }
+
+    .support-link svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .disclaimer {
+      font-size: 11px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 12.5px;
+    }
+
+    .footer-links a {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #6ee7b7;
+    }
+
+    .footer-links span {
+      color: #334155;
+    }
+
+    /* Tablet / large phones */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+        justify-content: flex-start;
+        padding-top: 28px;
+      }
+      .wrapper {
+        max-width: 100%;
+      }
+      .card {
+        padding: 32px 20px 28px;
+        border-radius: 22px;
+      }
+      .brand {
+        font-size: 24px;
+        letter-spacing: 2px;
+      }
+      .tagline {
+        font-size: 13px;
+        margin-bottom: 22px;
+      }
+      .timer-wrap {
+        margin-bottom: 24px;
+      }
+      .timer {
+        font-size: 12.5px;
+        padding: 7px 16px;
+      }
+      .logo {
+        width: 190px;
+        height: 68px;
+        padding: 11px 16px;
+        border-radius: 14px;
+      }
+      .logo::before {
+        border-radius: 16px;
+      }
+      .proof {
+        margin-bottom: 18px;
+      }
+      .proof-num {
+        font-size: 14px;
+      }
+      .features {
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .feature {
+        font-size: 13px;
+      }
+      .cta {
+        padding: 15px 20px;
+        font-size: 15px;
+        border-radius: 12px;
+      }
+      .motto {
+        font-size: 11.5px;
+        margin-top: 18px;
+      }
+      .bottom {
+        margin-top: 22px;
+      }
+      .disclaimer {
+        font-size: 10.5px;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 360px) {
+      .card {
+        padding: 28px 16px 24px;
+        border-radius: 20px;
+      }
+      .brand {
+        font-size: 22px;
+        letter-spacing: 1.5px;
+      }
+      .logo {
+        width: 170px;
+        height: 62px;
+        padding: 10px 14px;
+      }
+      .feature {
+        font-size: 12.5px;
+        gap: 10px;
+      }
+      .feature-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .cta {
+        padding: 14px 18px;
+        font-size: 14.5px;
+      }
+    }
+
+    /* Safe area for notched phones */
+    @supports (padding: max(0px)) {
+      body {
+        padding-left: max(14px, env(safe-area-inset-left));
+        padding-right: max(14px, env(safe-area-inset-right));
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <h1 class="brand">StakeAdda</h1>
+      <p class="tagline">Elite Games · Instant Action</p>
+
+      <div class="timer-wrap">
+        <div class="timer">
+          Redirecting in <span id="countdown">5</span>s
+        </div>
+      </div>
+
+      <div class="logo-wrap">
+        <div class="logo">
+          <img src="https://res.cloudinary.com/dc7znnco1/image/upload/v1785105483/logo/drhueoo0ryhai3cwzsu8.avif" alt="StakeAdda Logo" />
+        </div>
+      </div>
+
+      <div class="proof">
+        <p class="proof-num">10,000+ players already joined</p>
+        <p class="proof-sub">Trusted by the community</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Thousands of casino & live games
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Sports betting with live markets
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Fast & secure withdrawals
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          24/7 dedicated support
+        </div>
+      </div>
+
+      <a id="signup-link" href="https://stakeadda.live/" class="cta">Play Now →</a>
+
+      <p class="motto">PRECISION · STRENGTH · PASSION</p>
+      <p class="tg-line">Official Telegram · <span>@stakeaddalive</span></p>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <a href="https://t.me/StakeAddaOfficial" target="_blank" rel="noopener" class="support-link">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Contact Support
+    </a>
+
+    <p class="disclaimer">
+      <strong>Disclaimer:</strong> Independent information page for educational purposes. Betting & gaming involve risk. Profits not guaranteed. 18+ only. Play responsibly. We are not affiliated with third-party services.
+    </p>
+
+    <div class="footer-links">
+      <a href="https://t.me/StakeAddaOfficial" target="_blank" rel="noopener">Support</a>
+      <span>•</span>
+      <a href="https://stakeadda.live/" target="_blank" rel="noopener">Official Site</a>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    const countdownEl = document.getElementById('countdown');
+    const destination = "https://stakeadda.live/";
+    let remaining = 5;
+    const timer = setInterval(function () {
+      remaining -= 1;
+      if (countdownEl) countdownEl.textContent = remaining;
+      if (remaining <= 0) {
+        clearInterval(timer);
+        window.location.href = destination;
+      }
+    }, 1000);
+
+    var link = document.getElementById('signup-link');
+    if (!link) return;
+    var navigating = false;
+    link.addEventListener('click', function (event) {
+      if (navigating) {
+        event.preventDefault();
+        return;
+      }
+      try {
+        if (typeof window.fbq === 'function') {
+          window.fbq('trackCustom', 'SignUpClick', {
+            content_name: 'StakeAdda',
+            button_text: 'Play Now'
+          });
+        }
+      } catch (error) {}
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey ||
+          event.button !== 0 || link.target === '_blank') return;
+      event.preventDefault();
+      navigating = true;
+      window.setTimeout(function () {
+        window.location.assign(link.href);
+      }, 450);
+    });
+    window.addEventListener('pageshow', function () { navigating = false; });
+  })();
+  </script>
+</body>
+</html>
