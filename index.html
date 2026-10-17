@@ -7,22 +7,7 @@
   <meta name="description" content="StakeAdda - Elite online sports betting & casino games. Instant play, secure & seamless." />
   <meta name="theme-color" content="#070b14" />
 
-  <!-- Meta Pixel -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '881706684933110');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=881706684933110&ev=PageView&noscript=1"
-  /></noscript>
+
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -584,18 +569,18 @@
   </div>
 
   <script>
-  (function () {
-    const countdownEl = document.getElementById('countdown');
+  //(function () {
+    //const countdownEl = document.getElementById('countdown');
     const destination = "https://stakeadda.live/";
-    let remaining = 5;
+    //let remaining = 5;
     const timer = setInterval(function () {
       remaining -= 1;
       if (countdownEl) countdownEl.textContent = remaining;
       if (remaining <= 0) {
         clearInterval(timer);
-        window.location.href = destination;
-      }
-    }, 1000);
+      //  window.location.href = destination;
+      //}
+    //}, 1000);
 
     var link = document.getElementById('signup-link');
     if (!link) return;
